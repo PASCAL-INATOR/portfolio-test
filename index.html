@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Thierry Pascal Azie | Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thierry Pascal Azie | Software Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* General Body Styles */
-        :root {
-            --primary-color: #2c3e50; /* A dark slate blue */
-            --secondary-color: #3498db; /* A bright blue */
-            --background-color: #ecf0f1; /* A light grey */
-            --text-color: #34495e; /* A dark grey-blue */
-            --card-bg-color: #ffffff;
+        /* --- CSS STYLES --- */
+        
+        /* Basic Reset and Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         html {
@@ -20,256 +23,445 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--background-color);
-            color: var(--text-color);
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212;
+            color: #E0E0E0;
+            line-height: 1.6;
         }
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        /* Header and Navigation */
-        .header {
-            background-color: var(--card-bg-color);
-            padding: 1rem 0;
-            position: sticky;
+        /* Header */
+        header {
+            position: fixed;
             top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             z-index: 1000;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            text-align: center;
+            background-color: rgba(18, 18, 18, 0.8);
+            backdrop-filter: blur(10px);
         }
 
-        .nav-link {
-            margin: 0 20px;
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #FFFFFF;
+        }
+
+        .contact-btn {
             text-decoration: none;
-            color: var(--primary-color);
-            font-weight: bold;
+            color: #FFFFFF;
+            background-color: #333333;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .contact-btn:hover {
+            background-color: #8A2BE2; /* Accent Color */
+        }
+
+        /* Side Navigation */
+        .side-nav {
+            position: fixed;
+            right: 50px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+        }
+
+        .side-nav ul {
+            list-style: none;
+        }
+
+        .side-nav ul li {
+            margin: 20px 0;
+        }
+
+        .side-nav ul li a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 600;
             transition: color 0.3s;
+            writing-mode: vertical-rl;
+            position: relative;
+            padding-right: 25px;
+        }
+        
+        .side-nav ul li a::after {
+            content: attr(data-text);
+            position: absolute;
+            right: 100%;
+            top: 50%;
+            transform: translateY(-50%) rotate(180deg);
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s;
+            color: #fff;
+            background: #1E1E1E;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
         }
 
-        .nav-link:hover {
-            color: var(--secondary-color);
+        .side-nav ul li a:hover::after {
+            opacity: 1;
         }
 
-        /* General Section Styling */
-        .section {
-            background-color: var(--card-bg-color);
-            margin: 40px 0;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        .side-nav ul li a:hover,
+        .side-nav ul li a.active {
+            color: #FFFFFF;
         }
 
-        h2 {
-            color: var(--primary-color);
-            border-bottom: 3px solid var(--secondary-color);
-            padding-bottom: 10px;
-            margin-bottom: 25px;
+        /* Main Content */
+        main {
+            padding: 0 120px;
         }
 
         /* Hero Section */
-        .hero {
-            text-align: center;
-            padding: 60px 20px;
+        .hero-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 100vh;
+            padding-top: 80px; /* To account for fixed header */
         }
 
-        .hero h1 {
-            font-size: 3rem;
-            color: var(--primary-color);
-            margin: 0;
+        .hero-content {
+            max-width: 50%;
         }
 
-        .hero .subtitle {
-            font-size: 1.2rem;
-            color: var(--text-color);
-            margin: 10px 0 20px 0;
-        }
-
-        .contact-links a {
-            color: var(--secondary-color);
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        /* Experience Timeline */
-        .timeline-item {
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            color: #FFFFFF;
             margin-bottom: 20px;
         }
-        .timeline-item h3 {
-            margin: 0 0 5px 0;
-            color: var(--primary-color);
+
+        .hero-content p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            max-width: 500px;
         }
-        .timeline-item p {
-            margin: 0;
+
+        .about-me-link {
+            text-decoration: none;
+            color: #8A2BE2; /* Accent Color */
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .hero-image img {
+            max-width: 550px;
+            width: 100%;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* General Content Sections */
+        .content-section {
+            padding: 100px 0;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .content-section h2 {
+            font-size: 2.5rem;
+            color: #FFFFFF;
+            margin-bottom: 50px;
+            display: inline-block;
+            padding-bottom: 10px;
+            position: relative;
+        }
+
+        .content-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 3px;
+            background-color: #8A2BE2;
         }
 
         /* Skills Section */
         .skills-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+
+        .skill-item {
+            background-color: #1E1E1E;
+            padding: 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+            background-color: #8A2BE2;
+            box-shadow: 0 10px 20px rgba(138, 43, 226, 0.2);
+        }
+
+        /* Experience & Education Section */
+        .job, .education-item {
+            background: #1E1E1E;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            border-left: 4px solid #8A2BE2;
+            text-align: left;
+            transition: transform 0.3s;
         }
         
-        /* Responsive grid for smaller screens */
-        @media (max-width: 600px) {
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
+        .job:hover, .education-item:hover {
+            transform: scale(1.03);
         }
 
-        .skill-category h3 {
-            color: var(--primary-color);
+        .job h3, .education-item h3 {
+            font-size: 1.5rem;
+            color: #FFFFFF;
+            margin-bottom: 5px;
         }
 
-        .skill-category ul {
-            list-style-type: none;
-            padding: 0;
+        .job-details, .education-item p {
+            color: #A0A0A0;
         }
 
-        .skill-category li {
-            background-color: var(--background-color);
-            padding: 10px;
-            margin-bottom: 8px;
-            border-radius: 5px;
-            border-left: 5px solid var(--secondary-color);
+        /* Footer / Contact */
+        footer {
+            text-align: center;
+            padding: 80px 20px;
+            background-color: #1E1E1E;
         }
 
-        /* Education Section */
-        .education-item {
+        footer h2 {
+            font-size: 2.5rem;
+            color: #FFFFFF;
             margin-bottom: 20px;
         }
 
-        .education-item h3 {
-            margin: 0 0 5px 0;
-            color: var(--primary-color);
+        .email-link {
+            color: #8A2BE2;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: color 0.3s;
         }
-        .education-item p {
-            margin: 0;
+        
+        .email-link:hover {
+            color: #fff;
+        }
+
+        .social-links {
+            margin-top: 30px;
+        }
+
+        .social-links a {
+            color: #A0A0A0;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #8A2BE2;
         }
 
 
-        /* Footer */
-        .footer {
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
-            font-size: 0.9rem;
-            color: var(--text-color);
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            main {
+                padding: 0 50px;
+            }
+            .hero-section {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 120px;
+                justify-content: center;
+            }
+            .hero-content {
+                max-width: 100%;
+            }
+            .hero-image {
+                margin-top: 60px;
+            }
+            .side-nav {
+               display: none; /* Hiding side-nav on smaller screens for simplicity */
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 20px;
+            }
+            main {
+                padding: 0 20px;
+            }
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            .content-section h2 {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
 <body>
-    <header class="header">
-        <nav class="nav">
-            <a href="#home" class="nav-link">Home</a>
-            <a href="#experience" class="nav-link">Experience</a>
-            <a href="#skills" class="nav-link">Skills</a>
-            <a href="#education" class="nav-link">Education</a>
+
+    <!-- Header and Main Navigation -->
+    <header>
+        <div class="logo">&lt;TPA /&gt;</div>
+        <nav>
+            <a href="#contact" class="contact-btn">Contact</a>
         </nav>
     </header>
 
-    <main id="home" class="container">
-        <section class="hero">
-            <h1>Thierry Pascal Azie</h1>
-            <p class="subtitle">Software Engineering Student | Full-Stack Development Enthusiast</p>
-            <div class="contact-links">
-                <a href="mailto:thierrypascalazie@gmail.com">thierrypascalazie@gmail.com</a> |
-                <a href="https://www.linkedin.com/in/azie-thierry-pascal-697a30284" target="_blank">LinkedIn</a>
+    <!-- Side Dot Navigation -->
+    <aside class="side-nav">
+        <ul>
+            <li><a href="#hero" data-text="Home">01</a></li>
+            <li><a href="#about" data-text="About">02</a></li>
+            <li><a href="#skills" data-text="Skills">03</a></li>
+            <li><a href="#experience" data-text="Experience">04</a></li>
+            <li><a href="#education" data-text="Education">05</a></li>
+        </ul>
+    </aside>
+
+    <main>
+        <!-- Section 1: Hero -->
+        <section id="hero" class="hero-section">
+            <div class="hero-content">
+                <h1>Software Engineer</h1>
+                <p>Resolving design problems, building smart user interfaces and useful interactions, developing rich web applications and seamless web experiences.</p>
+                <a href="#about" class="about-me-link">About me &gt;</a>
+            </div>
+            <div class="hero-image">
+                <!-- Illustration from unDraw -->
+                <img src="https://images.prismic.io/ionic/d0343646-6019-4a3e-a840-7faa5a8f3316_ionic-vs-react-native-illustration-2.png?auto=compress,format" alt="Developer Illustration">
             </div>
         </section>
 
-        <section id="experience" class="section">
-            <h2>Work Experience</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <h3>Software Engineer Intern</h3>
-                    <p><strong>Providus Technologies Limited</strong> | [cite_start]May 2025 - Present [cite: 26, 24]</p>
-                </div>
-                <div class="timeline-item">
-                    <h3>Technical Assistant Trainee</h3>
-                    <p><strong>Asia Pacific University, Malaysia</strong> | [cite_start]September 2024-December 2024 [cite: 23, 25]</p>
-                </div>
-            </div>
+        <!-- Section 2: About Me -->
+        <section id="about" class="content-section">
+            <h2>About Me</h2>
+            <p>
+                I am a passionate and driven Software Engineering student with a strong foundation in both front-end and back-end technologies. With a proven ability to learn quickly and a knack for analytical problem-solving, I thrive in challenging environments. I am experienced in working collaboratively in teams and can perform effectively under pressure. My goal is to leverage my skills in software development, cybersecurity, and cloud computing to build innovative and impactful solutions.
+            </p>
         </section>
 
-        <section id="skills" class="section">
+        <!-- Section 3: Skills -->
+        <section id="skills" class="content-section">
             <h2>Skills & Interests</h2>
             <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Technical Skills</h3>
-                    <ul>
-                        [cite_start]<li>Vue JS [cite: 14]</li>
-                        [cite_start]<li>Spring Boot [cite: 14]</li>
-                        [cite_start]<li>Rest APIs [cite: 14]</li>
-                        [cite_start]<li>SQL (PostgreSQL) [cite: 14]</li>
-                        [cite_start]<li>.NET framework & C# [cite: 14]</li>
-                        [cite_start]<li>Python [cite: 14]</li>
-                        [cite_start]<li>Version Control (GitHub) [cite: 14]</li>
-                        [cite_start]<li>Docker & Microservices Architecture [cite: 14]</li>
-                        [cite_start]<li>Azure & AWS [cite: 14]</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3>Interests</h3>
-                    <ul>
-                        [cite_start]<li>Software development [cite: 17]</li>
-                        [cite_start]<li>Cybersecurity [cite: 17]</li>
-                        [cite_start]<li>Cloud computing [cite: 17]</li>
-                        [cite_start]<li>Artificial Intelligence & LLMs [cite: 17, 15]</li>
-                        [cite_start]<li>Networking [cite: 17]</li>
-                    </ul>
-                </div>
+                <div class="skill-item">Cybersecurity</div>
+                <div class="skill-item">Vue JS</div>
+                <div class="skill-item">REST APIs</div>
+                <div class="skill-item">SQL (PostgreSQL)</div>
+                <div class="skill-item">Spring Boot</div>
+                <div class="skill-item">Git & GitHub</div>
+                <div class="skill-item">Python</div>
+                <div class="skill-item">C# & .NET</div>
+                <div class="skill-item">Docker</div>
+                <div class="skill-item">Azure & AWS</div>
+                <div class="skill-item">Data Analytics in R</div>
+                <div class="skill-item">LLMs</div>
             </div>
         </section>
 
-        <section id="education" class="section">
+        <!-- Section 4: Experience -->
+        <section id="experience" class="content-section">
+            <h2>Work Experience</h2>
+            <div class="job">
+                <h3>Software Engineer Intern</h3>
+                <p class="job-details">Providus Technologies Limited | May 2025 - Present</p>
+            </div>
+            <div class="job">
+                <h3>Technical Assistant Trainee</h3>
+                <p class="job-details">Asia Pacific University, Malaysia | Sep 2024 - Dec 2024</p>
+            </div>
+        </section>
+
+        <!-- Section 5: Education -->
+        <section id="education" class="content-section">
             <h2>Education & Certifications</h2>
             <div class="education-item">
-                [cite_start]<h3>Bachelor's degree Software Engineering (CGPA 3.64, in progress) [cite: 5]</h3>
-                <p><strong>Asia Pacific University</strong> | [cite_start]July 2023-Present [cite: 4, 9]</p>
-            </div>
-            <div class="education-item">
-                <h3>Red Hat Certified System Administrator</h3>
-                [cite_start]<p>RH124 - Red Hat System Administration I 9.3 [cite: 19] [cite_start]& RH134 - Red Hat System Administration II 9.3 (In progress) [cite: 20]</p>
+                <h3>Bachelor's in Software Engineering</h3>
+                <p>Asia Pacific University (CGPA 3.64) | July 2023 - Present</p>
             </div>
              <div class="education-item">
+                <h3>RH124 & RH134 - Red Hat System Administration</h3>
+                <p>Official Red Hat Training</p>
+            </div>
+            <div class="education-item">
                 <h3>Multiple Udemy Specializations</h3>
-                [cite_start]<p>Covering Java, Microservices, Machine Learning, Blockchain, Ethical Hacking, and DevOps[cite: 20, 21].</p>
+                <p>Including Java, Microservices, Machine Learning, Blockchain, and Ethical Hacking.</p>
             </div>
         </section>
     </main>
 
-    <footer class="footer">
-        <p>Built by Thierry Pascal Azie</p>
+    <!-- Footer / Contact Section -->
+    <footer id="contact">
+        <h2>Get In Touch</h2>
+        <p>Feel free to reach out for collaborations or just a friendly chat!</p>
+        <a href="mailto:thierrypascalazie@gmail.com" class="email-link">thierrypascalazie@gmail.com</a>
+        <div class="social-links">
+             <a href="https://www.linkedin.com/in/azie-thierry-pascal-697a30284" target="_blank">LinkedIn</a>
+             <a href="https://github.com/your-username" target="_blank">GitHub</a> <!-- Remember to change 'your-username' -->
+        </div>
     </footer>
 
     <script>
-        const navLinks = document.querySelectorAll('.nav-link');
-
-        navLinks.forEach(link => {
-          link.addEventListener('click', (event) => {
-            // 1. Prevent the default browser action (jumping to the section)
-            event.preventDefault();
-
-            // 2. Get the target section's ID from the link's href attribute (e.g., '#skills')
-            const targetId = link.getAttribute('href');
-            if (!targetId) return; // Exit if the link has no href
-
-            // 3. Find the target element on the page using its ID
-            const targetElement = document.querySelector(targetId);
-            if (!targetElement) return; // Exit if no element with that ID is found
-
-            // 4. Use the scrollIntoView method to smoothly scroll to the element
-            targetElement.scrollIntoView({
-              behavior: 'smooth', // This makes the scrolling smooth
-              block: 'start'      // Align to the top of the section
+        // --- JAVASCRIPT LOGIC ---
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // Smooth scrolling for all anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetElement = document.querySelector(this.getAttribute('href'));
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
             });
-          });
+
+            // Active link highlighting for side navigation
+            const sections = document.querySelectorAll('section, footer');
+            const navLinks = document.querySelectorAll('.side-nav ul li a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (pageYOffset >= sectionTop - 60) { // 60 is an offset
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(a => {
+                    a.classList.remove('active');
+                    if (a.getAttribute('href').substring(1) === current) {
+                        a.classList.add('active');
+                    }
+                });
+            });
         });
     </script>
 </body>
