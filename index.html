@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thierry Pascal Azie | Portfolio</title>
+    
+    <style>
+        /* General Body Styles */
+        :root {
+            --primary-color: #2c3e50; /* A dark slate blue */
+            --secondary-color: #3498db; /* A bright blue */
+            --background-color: #ecf0f1; /* A light grey */
+            --text-color: #34495e; /* A dark grey-blue */
+            --card-bg-color: #ffffff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header and Navigation */
+        .header {
+            background-color: var(--card-bg-color);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .nav-link {
+            margin: 0 20px;
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: var(--secondary-color);
+        }
+
+        /* General Section Styling */
+        .section {
+            background-color: var(--card-bg-color);
+            margin: 40px 0;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--secondary-color);
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin: 0;
+        }
+
+        .hero .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            margin: 10px 0 20px 0;
+        }
+
+        .contact-links a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Experience Timeline */
+        .timeline-item {
+            margin-bottom: 20px;
+        }
+        .timeline-item h3 {
+            margin: 0 0 5px 0;
+            color: var(--primary-color);
+        }
+        .timeline-item p {
+            margin: 0;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        
+        /* Responsive grid for smaller screens */
+        @media (max-width: 600px) {
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .skill-category h3 {
+            color: var(--primary-color);
+        }
+
+        .skill-category ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .skill-category li {
+            background-color: var(--background-color);
+            padding: 10px;
+            margin-bottom: 8px;
+            border-radius: 5px;
+            border-left: 5px solid var(--secondary-color);
+        }
+
+        /* Education Section */
+        .education-item {
+            margin-bottom: 20px;
+        }
+
+        .education-item h3 {
+            margin: 0 0 5px 0;
+            color: var(--primary-color);
+        }
+        .education-item p {
+            margin: 0;
+        }
+
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: var(--text-color);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <a href="#home" class="nav-link">Home</a>
+            <a href="#experience" class="nav-link">Experience</a>
+            <a href="#skills" class="nav-link">Skills</a>
+            <a href="#education" class="nav-link">Education</a>
+        </nav>
+    </header>
+
+    <main id="home" class="container">
+        <section class="hero">
+            <h1>Thierry Pascal Azie</h1>
+            <p class="subtitle">Software Engineering Student | Full-Stack Development Enthusiast</p>
+            <div class="contact-links">
+                <a href="mailto:thierrypascalazie@gmail.com">thierrypascalazie@gmail.com</a> |
+                <a href="https://www.linkedin.com/in/azie-thierry-pascal-697a30284" target="_blank">LinkedIn</a>
+            </div>
+        </section>
+
+        <section id="experience" class="section">
+            <h2>Work Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>Software Engineer Intern</h3>
+                    <p><strong>Providus Technologies Limited</strong> | [cite_start]May 2025 - Present [cite: 26, 24]</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Technical Assistant Trainee</h3>
+                    <p><strong>Asia Pacific University, Malaysia</strong> | [cite_start]September 2024-December 2024 [cite: 23, 25]</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="section">
+            <h2>Skills & Interests</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Technical Skills</h3>
+                    <ul>
+                        [cite_start]<li>Vue JS [cite: 14]</li>
+                        [cite_start]<li>Spring Boot [cite: 14]</li>
+                        [cite_start]<li>Rest APIs [cite: 14]</li>
+                        [cite_start]<li>SQL (PostgreSQL) [cite: 14]</li>
+                        [cite_start]<li>.NET framework & C# [cite: 14]</li>
+                        [cite_start]<li>Python [cite: 14]</li>
+                        [cite_start]<li>Version Control (GitHub) [cite: 14]</li>
+                        [cite_start]<li>Docker & Microservices Architecture [cite: 14]</li>
+                        [cite_start]<li>Azure & AWS [cite: 14]</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Interests</h3>
+                    <ul>
+                        [cite_start]<li>Software development [cite: 17]</li>
+                        [cite_start]<li>Cybersecurity [cite: 17]</li>
+                        [cite_start]<li>Cloud computing [cite: 17]</li>
+                        [cite_start]<li>Artificial Intelligence & LLMs [cite: 17, 15]</li>
+                        [cite_start]<li>Networking [cite: 17]</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="section">
+            <h2>Education & Certifications</h2>
+            <div class="education-item">
+                [cite_start]<h3>Bachelor's degree Software Engineering (CGPA 3.64, in progress) [cite: 5]</h3>
+                <p><strong>Asia Pacific University</strong> | [cite_start]July 2023-Present [cite: 4, 9]</p>
+            </div>
+            <div class="education-item">
+                <h3>Red Hat Certified System Administrator</h3>
+                [cite_start]<p>RH124 - Red Hat System Administration I 9.3 [cite: 19] [cite_start]& RH134 - Red Hat System Administration II 9.3 (In progress) [cite: 20]</p>
+            </div>
+             <div class="education-item">
+                <h3>Multiple Udemy Specializations</h3>
+                [cite_start]<p>Covering Java, Microservices, Machine Learning, Blockchain, Ethical Hacking, and DevOps[cite: 20, 21].</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Built by Thierry Pascal Azie</p>
+    </footer>
+
+    <script>
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        navLinks.forEach(link => {
+          link.addEventListener('click', (event) => {
+            // 1. Prevent the default browser action (jumping to the section)
+            event.preventDefault();
+
+            // 2. Get the target section's ID from the link's href attribute (e.g., '#skills')
+            const targetId = link.getAttribute('href');
+            if (!targetId) return; // Exit if the link has no href
+
+            // 3. Find the target element on the page using its ID
+            const targetElement = document.querySelector(targetId);
+            if (!targetElement) return; // Exit if no element with that ID is found
+
+            // 4. Use the scrollIntoView method to smoothly scroll to the element
+            targetElement.scrollIntoView({
+              behavior: 'smooth', // This makes the scrolling smooth
+              block: 'start'      // Align to the top of the section
+            });
+          });
+        });
+    </script>
+</body>
+</html>
