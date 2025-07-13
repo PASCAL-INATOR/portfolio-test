@@ -37,7 +37,7 @@
             scroll-behavior: smooth;
         }
         
-        body.nav-open {
+        body.nav-open, body.modal-open {
             overflow: hidden;
         }
 
@@ -393,6 +393,100 @@
             color: var(--secondary-color);
             font-size: 0.9em;
         }
+
+        /* --- Chat Bubble --- */
+        @keyframes pulse-shadow {
+            0% { box-shadow: 0 0 0 0 rgba(138, 66, 227, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(138, 66, 227, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(138, 66, 227, 0); }
+        }
+        #chat-bubble {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-text);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1001;
+            box-shadow: 0 4px 15px rgba(138, 66, 227, 0.4);
+            animation: pulse-shadow 2.5s infinite;
+            transition: transform 0.3s ease;
+        }
+        #chat-bubble:hover {
+            transform: scale(1.1);
+            animation-play-state: paused;
+        }
+        #chat-bubble svg {
+            width: 32px;
+            height: 32px;
+            stroke: #fff;
+            stroke-width: 2;
+        }
+
+        /* --- Chatbot Modal --- */
+        .chatbot-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+        .chatbot-modal-overlay.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        .chatbot-modal-content {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.3s;
+        }
+        .chatbot-modal-overlay.visible .chatbot-modal-content {
+            transform: scale(1);
+        }
+        .chatbot-modal-content h3 {
+            margin-top: 0;
+            font-size: 1.5em;
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .chatbot-modal-content p {
+            color: var(--secondary-color);
+            margin-bottom: 30px;
+        }
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            cursor: pointer;
+            color: var(--secondary-color);
+            transition: color 0.3s, transform 0.3s;
+        }
+        .close-modal:hover {
+            color: var(--primary-color);
+            transform: rotate(90deg);
+        }
         
         /* --- Responsive Design --- */
         @media (max-width: 768px) {
@@ -625,6 +719,29 @@
         </div>
     </footer>
 
+    <!-- Chat Bubble -->
+    <div id="chat-bubble">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+    </div>
+
+    <!-- Chatbot Modal -->
+    <div id="chatbot-modal" class="chatbot-modal-overlay">
+        <div class="chatbot-modal-content">
+            <div id="close-modal" class="close-modal">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </div>
+            <h3>Chat With Me</h3>
+            <p>This is a placeholder for the chatbot. You can integrate your favorite chat service here!</p>
+            <a href="mailto:thierrypascalazie@gmail.com" class="btn btn-primary">Or Email Me</a>
+        </div>
+    </div>
+
+
     <script>
         // --- Scroll Animations ---
         const sections = document.querySelectorAll('section');
@@ -675,10 +792,31 @@
                 }
             });
         });
-    </script>
-</body>
-</html>
+
+        // --- Chatbot Modal Logic ---
+        const chatBubble = document.getElementById('chat-bubble');
+        const chatbotModal = document.getElementById('chatbot-modal');
+        const closeModal = document.getElementById('close-modal');
+
+        chatBubble.addEventListener('click', () => {
+            chatbotModal.classList.add('visible');
+            document.body.classList.add('modal-open');
         });
+
+        const closeChatModal = () => {
+            chatbotModal.classList.remove('visible');
+            document.body.classList.remove('modal-open');
+        };
+
+        closeModal.addEventListener('click', closeChatModal);
+        
+        // Close modal if user clicks on the overlay
+        chatbotModal.addEventListener('click', (e) => {
+            if (e.target === chatbotModal) {
+                closeChatModal();
+            }
+        });
+
     </script>
 </body>
 </html>
